@@ -22,6 +22,9 @@ import {snapPoint} from 'react-native-redash';
 import tw from '../../lib/tailwind';
 import Pagination from '../carousel/Dot';
 import Dot from '../carousel/Dot';
+import BaseButton from '../buttons/BaseButton';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import SignInUpButtons from './SignInUpButtons';
 
 export type OnboardingSlide = {
   imagePath: ImageSourcePropType;
@@ -55,7 +58,6 @@ const data: OnboardingSlide[] = [
 
 const Carousel = () => {
   const {width} = useWindowDimensions();
-  const xPosition = useSharedValue<number>(0);
   const translationX = useSharedValue<number>(0);
   const scroll = useRef<Animated.ScrollView>(null);
 
@@ -63,18 +65,12 @@ const Carousel = () => {
     translationX.value = event.contentOffset.x;
   });
 
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      //transform: [{translateX: xPosition.value}],
-    };
-  });
-
   const currentIndex = useDerivedValue(() => {
     return translationX.value / width;
   });
 
   return (
-    <View>
+    <View style={tw`flex-1`}>
       <Animated.ScrollView
         ref={scroll}
         horizontal
@@ -83,14 +79,13 @@ const Carousel = () => {
         showsHorizontalScrollIndicator={false}
         bounces={false}
         onScroll={onScroll}
-        style={[animatedStyle]}
       >
         {data.map((item, index) => {
           return <Slide key={index.toString()} item={item} />;
         })}
       </Animated.ScrollView>
 
-      <View style={tw`flex-row justify-center mt-4`}>
+      <View style={tw`flex-row justify-center flex-1 `}>
         {data.map((_, index) => (
           <Dot index={index} key={index} currentIndex={currentIndex} />
         ))}

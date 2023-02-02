@@ -18,10 +18,10 @@ const Slide: React.FC<SlideProps> = ({item}) => {
   const {title, subtitle, alt, imagePath} = item;
   const {width} = useWindowDimensions();
   return (
-    <View style={[tw`flex `, {width}]}>
+    <View style={{width}}>
       <View
         style={[
-          tw` rounded-b-4xl flex justify-end bg-black overflow-hidden`,
+          tw` rounded-b-4xl justify-end bg-black overflow-hidden`,
           {width},
         ]}
       >
@@ -32,7 +32,7 @@ const Slide: React.FC<SlideProps> = ({item}) => {
           style={[tw`rounded-b-3xl h-[60vh]`, styles.image, {width}]}
         />
       </View>
-      <View style={tw`flex w-[80vw] tablet:w-[60vw] self-center mt-8`}>
+      <View style={tw` w-[80vw] tablet:w-[60vw] self-center mt-8`}>
         <Text style={tw`text-xl mb-3 font-semibold text-center`}>{title}</Text>
         <Text style={tw`text-center`}>{subtitle}</Text>
       </View>
