@@ -1,11 +1,4 @@
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-  Text,
-} from 'react-native';
+import {Image, StyleSheet, useWindowDimensions, View, Text} from 'react-native';
 import React from 'react';
 import tw from '../../lib/tailwind';
 import {OnboardingSlide} from '../onboarding/Carousel';

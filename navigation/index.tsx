@@ -25,6 +25,8 @@ import {
 } from './types';
 import LinkingConfiguration from './LinkingConfiguration';
 import WelcomeCarousel from '../screens/onboarding/WelcomeCarousel';
+import SignIn from '../screens/authentication/SignIn';
+import Register from '../screens/authentication/Register';
 
 export default function Navigation({
   colorScheme,
@@ -51,6 +53,8 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Onboarding" component={WelcomeCarousel} />
+      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen
         name="Home"
         component={BottomTabNavigator}

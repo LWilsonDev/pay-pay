@@ -1,30 +1,18 @@
 import {
   ImageSourcePropType,
-  ScrollView,
   StyleSheet,
-  Text,
   useWindowDimensions,
   View,
 } from 'react-native';
 import React, {useRef} from 'react';
 import Slide from '../carousel/Slide';
-import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
-  divide,
   useAnimatedScrollHandler,
-  useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
-  withSpring,
 } from 'react-native-reanimated';
-import {PanGesture} from 'react-native-gesture-handler/lib/typescript/handlers/gestures/panGesture';
-import {snapPoint} from 'react-native-redash';
 import tw from '../../lib/tailwind';
-import Pagination from '../carousel/Dot';
 import Dot from '../carousel/Dot';
-import BaseButton from '../buttons/BaseButton';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import SignInUpButtons from './SignInUpButtons';
 
 export type OnboardingSlide = {
   imagePath: ImageSourcePropType;
