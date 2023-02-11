@@ -15,7 +15,7 @@ const BaseButton: FC<BaseButtonProps> = ({
   ...props
 }) => {
   const baseStyles = tw.style(
-    `rounded-5 border border-green-600 items-center px-2 py-5 flex-1 ${
+    `rounded-5 border border-green-600 items-center px-2 py-5 flex-grow ${
       twStyles ?? ''
     }`,
     {

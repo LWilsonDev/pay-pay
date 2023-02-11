@@ -1,16 +1,17 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import TabButtons, {TabButton} from '../buttons/TabButtons';
+import EmailLoginForm from './EmailLoginForm';
+import PhoneLoginForm from './PhoneLoginForm';
 
 export enum SignInTab {
   Email,
   Phone,
 }
 
-interface SignInFormProps {}
-
 const SignInForm = () => {
   const [selectedTab, setSelectedTab] = useState<SignInTab>(SignInTab.Email);
+  const navigation = useNavigation();
 
   const buttons: TabButton[] = [
     {title: 'email', accessibilityLabel: 'Login with email', onPress: () => {}},
@@ -21,6 +22,10 @@ const SignInForm = () => {
     },
   ];
 
+  const onSubmit = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <>
       <TabButtons
@@ -29,14 +34,12 @@ const SignInForm = () => {
         setSelectedTab={setSelectedTab}
       />
       {selectedTab === SignInTab.Email ? (
-        <Text>Email content</Text>
+        <EmailLoginForm onSubmit={onSubmit} />
       ) : (
-        <Text>Phone content</Text>
+        <PhoneLoginForm onSubmit={onSubmit} />
       )}
     </>
   );
 };
 
 export default SignInForm;
-
-const styles = StyleSheet.create({});

@@ -3,41 +3,24 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import {FontAwesome} from '@expo/vector-icons';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {ColorSchemeName, Pressable} from 'react-native';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from './types';
+import {RootStackParamList, RootTabParamList} from './types';
 import LinkingConfiguration from './LinkingConfiguration';
 import WelcomeCarousel from '../screens/onboarding/WelcomeCarousel';
 import SignIn from '../screens/authentication/SignIn';
 import Register from '../screens/authentication/Register';
+import Send from '../screens/tabScreens/Send';
+import tw from '../lib/tailwind';
 
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
+export default function Navigation() {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-    >
+    <NavigationContainer linking={LinkingConfiguration} theme={DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -71,44 +54,33 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+  const activeColor = tw.color('green-600');
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Send"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        headerShown: false,
+        tabBarActiveTintColor: activeColor,
+        tabBarStyle: {
+          backgroundColor: 'white',
+          borderTopColor: 'white',
+        },
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({navigation}: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
-          // headerRight: () => (
-          //   <Pressable
-          //     onPress={() => navigation.navigate('Modal')}
-          //     style={({pressed}) => ({
-          //       opacity: pressed ? 0.5 : 1,
-          //     })}
-          //   >
-          //     <FontAwesome
-          //       name="info-circle"
-          //       size={25}
-          //       color={Colors[colorScheme].text}
-          //       style={{marginRight: 15}}
-          //     />
-          //   </Pressable>
-          // ),
-        })}
+        name="Send"
+        component={Send}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color}) => <TabBarIcon name="home" color={color} />,
+        }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Account"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({color}) => <TabBarIcon name="account" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -119,8 +91,10 @@ function BottomTabNavigator() {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{marginBottom: -3}} {...props} />;
+  return (
+    <MaterialCommunityIcons size={30} style={{marginBottom: -3}} {...props} />
+  );
 }

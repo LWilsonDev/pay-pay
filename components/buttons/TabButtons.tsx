@@ -61,11 +61,10 @@ const TabButtons: FC<TabButtonsProps> = ({
       <Animated.View
         style={[
           animatedStyle,
-          tw`bg-white rounded-lg mx-1 `,
+          tw`bg-white rounded-lg mx-1 absolute`,
           {
             height: tabbarDimens.height - padding,
             width: buttonWidth - padding,
-            position: 'absolute',
           },
         ]}
       />
