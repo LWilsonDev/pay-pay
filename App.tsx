@@ -6,6 +6,7 @@ import {useDeviceContext} from 'twrnc';
 
 import useCachedResources from './hooks/useCachedResources';
 import Navigation from './navigation';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 export default function App() {
   useDeviceContext(tw, {withDeviceColorScheme: false}); // allows tailwind to access things like landscape/portrait, opt out of dark mode
@@ -15,10 +16,12 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation />
-        <StatusBar style="auto" />
-      </SafeAreaProvider>
+      <BottomSheetModalProvider>
+        <SafeAreaProvider>
+          <Navigation />
+          <StatusBar style="auto" />
+        </SafeAreaProvider>
+      </BottomSheetModalProvider>
     );
   }
 }

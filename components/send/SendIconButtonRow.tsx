@@ -1,10 +1,14 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import IconButton from '../buttons/IconButton';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import tw from '../../lib/tailwind';
 
-const SendIconButtonRow = () => {
+interface SendIconButtonRowProps {
+  parentHeight: number; // height of parent container needed for positioning absolutely
+}
+
+const SendIconButtonRow: FC<SendIconButtonRowProps> = ({parentHeight}) => {
   const iconColor = tw.color('gray-500');
   const iconSize = 24;
   const buttonStyle = 'w-[20]';
@@ -12,12 +16,13 @@ const SendIconButtonRow = () => {
   const handleTopUpPress = () => {};
   const handleSendPress = () => {};
   const handleRequestPress = () => {};
+  const height = 90;
 
   return (
     <View
       style={[
-        tw`flex-row bg-white py-5 px-2 absolute rounded-3xl z-5 self-center`,
-        {transform: [{translateY: -45}]},
+        tw`flex-row bg-white py-4 px-2 absolute rounded-3xl z-5 self-center `,
+        {top: parentHeight - height / 2, height},
       ]}
       accessibilityRole={'menu'}
     >
