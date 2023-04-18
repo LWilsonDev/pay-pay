@@ -56,7 +56,6 @@ const BaseBottomSheet: React.FC<BaseBottomSheetProps> = ({
       keyboardBehavior="extend"
       handleHeight={animatedHandleHeight}
       contentHeight={animatedContentHeight}
-      backgroundStyle={{backgroundColor: 'red'}}
       backdropComponent={(props) => (
         <BottomSheetBackdrop
           {...props}

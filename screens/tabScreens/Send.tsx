@@ -42,7 +42,6 @@ const Send = () => {
 
   const handleGraphSelect = (selected: balanceByYearDataSelector) => {
     const {year, months, label} = selected;
-    console.log('selected', selected);
 
     setSelectedGraph({...selectedGraph, year, months, label});
   };

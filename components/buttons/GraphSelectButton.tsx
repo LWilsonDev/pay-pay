@@ -1,12 +1,7 @@
-import {Text, Pressable, View, ListRenderItem} from 'react-native';
-import React, {FC, useCallback, useMemo, useRef, useState} from 'react';
+import {Text, Pressable} from 'react-native';
+import React, {FC, useState} from 'react';
 import tw from '../../lib/tailwind';
 import {AntDesign} from '@expo/vector-icons';
-import BottomSheet, {
-  BottomSheetModalProvider,
-  BottomSheetFlatList,
-  BottomSheetModal,
-} from '@gorhom/bottom-sheet';
 import {balanceByYearDataSelector} from '../../api/dummyData/types';
 import BaseBottomSheet, {
   BottomSheetIndex,

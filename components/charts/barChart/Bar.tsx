@@ -1,14 +1,9 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React, {FC, useEffect} from 'react';
 import tw from '../../../lib/tailwind';
 import Animated, {
-  BaseAnimationBuilder,
-  EntryAnimationsValues,
-  EntryExitAnimationFunction,
-  SlideInUp,
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 
@@ -24,7 +19,7 @@ const Bar: FC<BarProps> = ({totalHeight, barHeight, barWidth, barMargin}) => {
 
   useEffect(() => {
     animatedHeight.value = withTiming(barHeight);
-  }, []);
+  }, [animatedHeight, barHeight]);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
