@@ -2,7 +2,6 @@ import React, {FC, useState} from 'react';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import tw from '../../../../lib/tailwind';
 import BaseInput, {BaseInputProps} from '../BaseInput';
-import {Pressable} from 'react-native';
 import IconButton from '../../../buttons/IconButton';
 
 interface PasswordInputProps extends Omit<BaseInputProps, 'icon'> {}

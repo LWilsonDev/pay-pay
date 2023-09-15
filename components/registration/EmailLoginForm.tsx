@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {
-  FieldValues,
   FormProvider,
   SubmitErrorHandler,
   SubmitHandler,
